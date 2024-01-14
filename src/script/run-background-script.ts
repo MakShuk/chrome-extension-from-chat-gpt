@@ -1,5 +1,4 @@
-export class BackgroundScript {
-	static async run<T>(func: (...args: string[]) => any, arr?: string[]): Promise<any> {
+export async function runBackgroundScript<T>(func: (...args: string[]) => any, arr?: string[]): Promise<any> {
 		try {
 			let funcResult: T;
 			const [tab] = await chrome.tabs.query({
@@ -30,4 +29,4 @@ export class BackgroundScript {
 			};
 		}
 	}
-}
+

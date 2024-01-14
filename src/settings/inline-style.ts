@@ -6,4 +6,4 @@ export const inlineStyle = {
 export const classesStyle = {
 	ul: `class="transition-colors duration-200 text-white cursor-pointer text-sm rounded-md border-white/20"`,
 	li: `class=" transition-colors duration-200 text-white cursor-pointer text-sm rounded-md border-white/20 hover:bg-gray-500/10 h-11 flex-grow overflow-hidden"`,
-  }
+};

@@ -1,12 +1,20 @@
-import { chatGPTExtends } from './componets/chat-gpt-panel/chat-gpt-panel';
-import { observerChatPage } from './componets/chat-gpt-panel/observer-chat-page';
-import { googleHotKeyExtends } from './componets/google-hot-key/google-hot-key';
+import { chatGPTExtends } from './components/chat-gpt-panel/components';
+import { observerChatPage } from './components/chat-gpt-panel/observer-chat-page';
+import { allFileAndFolderNameToRequest, fileToRequest } from './components/file-to-request/file-to-request';
+import { googleHotKeyExtends } from './components/google-hot-key/google-hot-key';
 
 import './style.scss';
 
 function initChatGPTExtends() {
-	chatGPTExtends();
-	observerChatPage(chatGPTExtends);
+	try {
+		chatGPTExtends();
+		observerChatPage(chatGPTExtends);
+		fileToRequest();
+		allFileAndFolderNameToRequest()
+		return { content: `Функции чата выполнены без ошибок`, error: false };
+	} catch (error) {
+		return { content: `${error}`, error: true };
+	}
 }
 
 function initHotkeys() {
@@ -14,8 +22,9 @@ function initHotkeys() {
 }
 
 function initApp() {
-	initChatGPTExtends();
+console.log(initChatGPTExtends().content);	
 	initHotkeys();
 }
 
 initApp();
+  

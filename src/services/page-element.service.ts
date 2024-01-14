@@ -6,7 +6,7 @@ export interface IElementAction {
 	content: string;
 }
 
-export interface IСhecked {
+export interface IChecked {
 	error: boolean;
 	content: boolean | string;
 }
@@ -66,7 +66,7 @@ export class PageElementService {
 			this.node.element.addEventListener(typeEvent || 'click', () => {
 				runFunction();
 			});
-			return { error: false, content: `Событие добалено` };
+			return { error: false, content: `Событие добелено` };
 		} catch (error) {
 			return { error: true, content: `${error}` };
 		}
@@ -131,7 +131,7 @@ export class PageElementService {
 		}
 	};
 
-	public isChecked = (): IСhecked => {
+	public isChecked = (): IChecked => {
 		try {
 			if (this.node.error) throw new Error(this.node.content);
 

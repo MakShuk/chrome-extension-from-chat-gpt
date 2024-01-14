@@ -17,7 +17,7 @@ export class BindActionHotKey {
 
 			return {
 				error: false,
-				content: `Добавленно событие keydown: ${this.hotKey}} на страницу`,
+				content: `Добавлено событие keydown: ${this.hotKey}} на страницу`,
 			};
 		} catch (e) {
 			return {

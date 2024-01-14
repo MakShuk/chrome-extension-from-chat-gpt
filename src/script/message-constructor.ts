@@ -1,4 +1,4 @@
-function messegeConsructor(task: string, taskCode: string) {
+export function messageConstructor(task: string, taskCode: string) {
 	const persona = `Behave like an experienced programmer`;
 	const context = ``;
 	const format = `Answer in Russian`;

@@ -1,14 +1,12 @@
 $primary-color: #198754;
-$background-color : #34353d;
+$background-color: #34353d;
 
 @mixin focus-style {
 	box-shadow: 0 0 0 1px $primary-color;
-	border: 1px solid $primary-color; 
-  }
+	border: 1px solid $primary-color;
+}
 
-
-
-#extention-body {
+#extension-body {
 	height: minmax(max-content, 550px);
 	width: 780px;
 	background-color: $background-color;
@@ -18,23 +16,46 @@ $background-color : #34353d;
 	flex-direction: column;
 	#extension-request {
 		display: grid;
-        grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr 1fr;
 		input:checked {
-			background-color: $primary-color;;
-			border-color: $primary-color;;
+			background-color: $primary-color;
+			border-color: $primary-color;
 		}
 		input:focus {
-			@include focus-style; 
-		  }
+			@include focus-style;
+		}
 	}
-	#extension-input {
+	#extension-input-all,
+	#extension-input-one {
+		display: grid;
+		grid-template-columns: 80% 20%;
+		gap: 10px;
+		margin-bottom: 10px;
 		button {
-			background-color: $primary-color;;
+			background-color: $primary-color;
 			width: 100%;
-		 }
+		}
 
-		 input:focus {
-			@include focus-style; 
+		input:focus {
+			@include focus-style;
+		}
+	}
+
+	file {
+		display: grid;
+		grid-template-columns: 80% 20%;
+		div {
+			padding: 0.5rem;
+			padding-left: 25px;
+		}
+		img {
+			width: 21px;
+			margin: 10px;
+			cursor: pointer;
+			transition: transform 0.2s; 
+		}
+		img:active {
+			transform: scale(0.90);
 		  }
 	}
 }

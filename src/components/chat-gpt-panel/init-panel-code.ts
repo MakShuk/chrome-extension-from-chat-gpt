@@ -1,13 +1,13 @@
-import { IPanelRequest } from '../../settings/promts';
+import { IPanelRequest } from '../../settings/prompt';
 import { classesStyle, inlineStyle } from '../../settings/inline-style';
 
 export function initPanelCode(gen: IPanelRequest[]): string {
 	let code: string = `<ul id="extension-panel" ${classesStyle.ul} ${inlineStyle.ul}>`;
 
 	for (let textObj of gen) {
-		code += `<li ${classesStyle.li} ${inlineStyle.li}>${createHideSpan(
-			textObj.hideText,
-		)} ${textObj.text}</li>`;
+		code += `<li ${classesStyle.li} ${inlineStyle.li}>${createHideSpan(textObj.hideText)} ${
+			textObj.text
+		}</li>`;
 	}
 
 	return `${code}</ul>`;

@@ -1,0 +1,30 @@
+{
+	"name": "super-chrome-extention",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "npx webpack"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/chrome": "^0.0.227",
+		"css-loader": "^6.8.1",
+		"eslint": "^8.42.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"prettier": "^2.8.8",
+		"sass": "^1.66.1",
+		"sass-loader": "^13.3.2",
+		"style-loader": "^3.3.3",
+		"ts-loader": "^9.4.4",
+		"tslog": "^4.9.2",
+		"typescript": "^5.2.2",
+		"webpack": "^5.88.2",
+		"webpack-cli": "^5.1.4"
+	},
+	"dependencies": {
+		"openai": "^4.4.0"
+	}
+}

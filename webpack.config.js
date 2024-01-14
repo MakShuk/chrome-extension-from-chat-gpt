@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'production', // Может быть 'production' или 'development'
@@ -10,6 +11,12 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
+  plugins: [
+		new HtmlWebpackPlugin({
+      filename: 'popup.html',
+			template: './src/index.html',
+		}),
+	],
   module: {
     rules: [
       {

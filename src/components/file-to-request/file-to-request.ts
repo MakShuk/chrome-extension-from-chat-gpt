@@ -63,7 +63,6 @@ export async function allFileAndFolderNameToRequest() {
 		const answerButton = new PageElementService(ExtensionElementsSelector.FolderButton);
 		if (answerButton.node.error) throw new Error(answerButton.node.content);
 		answerButton.addEvent(async () => {
-			console.log('click');
 			//answerButton.hide(true);
 			const taskCodeStatus = await getFileAndFolderPath();
 			const statusArea = new PageElementService(ExtensionElementsSelector.StatusArea);

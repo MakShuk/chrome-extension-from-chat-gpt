@@ -27,7 +27,7 @@ export async function requestOneFile(path: string) {
 		}
 		return { content: content.data, error: false };
 	} catch (error) {
-		return { content: `Запрос по пути ${path} Функция: requestToAPi`, error: true };
+		return { content: `Запрос по пути ${path} Функция: requestToAPi ${error}`, error: true };
 	}
 }
 
@@ -40,7 +40,7 @@ export async function getFileAndFolderPath() {
 
 		const requestStatus = await requestAllFile(pathInputValue.content);
 
-		return { content: 'Получены данные с сервера', error: false, data: requestStatus.data };
+		return { content: requestStatus.content, error: false, data: requestStatus.data };
 	} catch (error) {
 		return { content: `getFileAndFolderPath: ${error}`, error: true };
 	}
@@ -77,6 +77,6 @@ async function requestAllFile(path: string) {
 
 		return { content: `Значения получены`, error: false, data: content };
 	} catch (error) {
-		return { content: `Запрос по пути ${path} Функция: requestToAPi`, error: true };
+		return { content: `Запрос по пути ${path} Функция: requestAllFile, ${error}`, error: true };
 	}
 }

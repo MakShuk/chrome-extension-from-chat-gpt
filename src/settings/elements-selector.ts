@@ -11,4 +11,5 @@ export enum ExtensionElementsSelector {
 	PathInputAll = '#path-input-all',
 	StatusArea = '#status-area',
 	ExtensionRequest = '#extension-request',
+	CreatedImg =  "created-img"
 }

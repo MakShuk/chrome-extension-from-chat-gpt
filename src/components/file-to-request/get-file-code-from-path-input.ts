@@ -1,22 +1,4 @@
 import axios from 'axios';
-import { PageElementService } from '../../services/page-element.service';
-import { ExtensionElementsSelector } from '../../settings/elements-selector';
-
-export async function getFileCodeFromPathInput(): Promise<{ content: string; error: boolean }> {
-	try {
-		const pathInput = new PageElementService(ExtensionElementsSelector.PathInputOne);
-		const pathInputValue = pathInput.getValue();
-
-		if (pathInputValue.error) throw new Error(pathInputValue.content);
-
-		const requestStatus = await requestOneFile(pathInputValue.content);
-
-		if (requestStatus.error) throw new Error(requestStatus.content);
-		return { content: requestStatus.content, error: false };
-	} catch (error) {
-		return { content: `код из файла не получен ${error}`, error: true };
-	}
-}
 
 export async function requestOneFile(path: string) {
 	try {
@@ -31,22 +13,7 @@ export async function requestOneFile(path: string) {
 	}
 }
 
-export async function getFileAndFolderPath() {
-	try {
-		const pathInput = new PageElementService(ExtensionElementsSelector.PathInputAll);
-		const pathInputValue = pathInput.getValue();
-
-		if (pathInputValue.error) throw new Error(pathInputValue.content);
-
-		const requestStatus = await requestAllFile(pathInputValue.content);
-
-		return { content: requestStatus.content, error: false, data: requestStatus.data };
-	} catch (error) {
-		return { content: `getFileAndFolderPath: ${error}`, error: true };
-	}
-}
-
-async function requestAllFile(path: string) {
+export async function requestAllFile(path: string) {
 	try {
 		if (path.length <= 0) throw new Error(`Получено пустое значение пути`);
 		const content: { fullUrl: string; file: string[] }[] = (

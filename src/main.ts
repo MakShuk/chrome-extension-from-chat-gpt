@@ -4,6 +4,7 @@ import {
 	allFileAndFolderNameToRequest,
 	fileToRequest,
 } from './components/file-to-request/file-to-request';
+import { storageManager } from './components/file-to-request/storage-manager';
 import { googleHotKeyExtends } from './components/google-hot-key/google-hot-key';
 
 import './style.scss';
@@ -27,6 +28,7 @@ function initHotkeys() {
 function initApp() {
 	initChatGPTExtends();
 	initHotkeys();
+	storageManager()
 }
 
 initApp();

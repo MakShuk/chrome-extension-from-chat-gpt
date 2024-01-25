@@ -107,7 +107,7 @@ export class PageElementService {
 			if (el && 'value' in el && typeof el.value === 'string' && el.value.length > 0) {
 				textContent = el.value;
 			} else {
-				throw new Error('Значение value не заданно');
+				throw new Error('Значение value не задано');
 			}
 			return { error: false, content: textContent };
 		} catch (error) {
@@ -123,7 +123,7 @@ export class PageElementService {
 			if (el && 'value' in el && typeof el.value === 'string') {
 				el.value = content;
 			} else {
-				throw new Error('Значение value не заданно');
+				throw new Error('Значение value не задано');
 			}
 			return { error: false, content: `Значение value: ${content} заданно` };
 		} catch (error) {
@@ -141,7 +141,7 @@ export class PageElementService {
 			if (el && 'checked' in el && typeof el.checked === 'boolean') {
 				isChecked = el.checked;
 			} else {
-				throw new Error('Значение value не заданно');
+				throw new Error('Значение value не задано');
 			}
 			return { error: false, content: isChecked };
 		} catch (error) {

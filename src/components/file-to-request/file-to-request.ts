@@ -51,7 +51,7 @@ export async function fileToRequest() {
 export async function allFileAndFolderNameToRequest() {
 	try {
 		const answerButton = new PageElementService(ExtensionElementsSelector.FolderButton);
-		const folderPathStorage = new LocalStorageService(LocalStorageKey.FolderURl);
+		const folderPathStorage = new LocalStorageService(LocalStorageKey.FolderURL);
 		const pathInput = new PageElementService(ExtensionElementsSelector.PathInputAll);
 
 		if (answerButton.node.error) throw new Error(answerButton.node.content);
@@ -63,7 +63,6 @@ export async function allFileAndFolderNameToRequest() {
 			const taskCodeStatus = await requestAllFile(pathInputValue.content);
 			const statusArea = new PageElementService(ExtensionElementsSelector.StatusArea);
 			if (taskCodeStatus.error || !taskCodeStatus.data || taskCodeStatus.data?.length === 0) {
-				answerButton.hide(false);
 				statusArea.hide(false);
 				statusArea.setTextContent(
 					`${taskCodeStatus.content}, количество элементов: ${taskCodeStatus.data?.length}`,

@@ -10,7 +10,7 @@ export async function storageManager() {
 
 async function setFilePath() {
 	const pathInput = new PageElementService(ExtensionElementsSelector.PathInputOne);
-	const pathStorage = new LocalStorageService(LocalStorageKey.FileURL);
+	const pathStorage = new LocalStorageService(LocalStorageKey.FolderURL);
 
 	const pathStorageValue = await pathStorage.getItem();
 
@@ -25,11 +25,12 @@ async function setFilePath() {
 
 async function setFolderPath() {
 	const pathInput = new PageElementService(ExtensionElementsSelector.PathInputAll);
-	const pathStorage = new LocalStorageService(LocalStorageKey.FolderURl);
+	const pathStorage = new LocalStorageService(LocalStorageKey.FolderURL);
 
 	const pathStorageValue = await pathStorage.getItem();
 
 	if (pathInput.node.error) {
+		console.error(pathInput.node.content);
 		return;
 	}
 

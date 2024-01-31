@@ -1,4 +1,4 @@
 export enum LocalStorageKey {
-	FolderURl = 'folder',
+	FolderURL = 'folder',
 	FileURL = 'file',
 }

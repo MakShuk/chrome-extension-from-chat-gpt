@@ -68,6 +68,7 @@ export async function allFileAndFolderNameToRequest() {
 					`${taskCodeStatus.content}, количество элементов: ${taskCodeStatus.data?.length}`,
 				);
 			} else {
+				hideAllInput();
 				await folderPathStorage.setItem(pathInputValue.content);
 				createFolderAndFileElements(taskCodeStatus.data);
 				addEventListenerToCreatedImg();
@@ -79,4 +80,9 @@ export async function allFileAndFolderNameToRequest() {
 		alertMessage.setTextContent(`${error}`);
 		return { content: `${error}`, error: true };
 	}
+}
+
+function hideAllInput() {
+	const inputAreaElement = new PageElementService(`#input-area`);
+	inputAreaElement.hide(true);
 }

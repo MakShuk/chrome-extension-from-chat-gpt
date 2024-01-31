@@ -1,90 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-			crossorigin="anonymous"
-		/>
-	</head>
-	<body id="extension-body">
-		<div id="status-area"  style="display: none;"  class="alert alert-danger" role="alert">OK</div>
-		<div class="p-2" id="extension-request">
-			<div class="form-check form-switch">
-				<input
-					class="form-check-input"
-					type="checkbox"
-					role="switch"
-					id="questions-1"
-					value="Check the spelling if there are none, write that there is none, except for this, do not walk"
-				/>
-				<label class="form-check-label text-light" for="questions-1">Проверить правописание</label>
-			</div>
-			<div class="form-check form-switch">
-				<input
-					class="form-check-input"
-					type="checkbox"
-					role="switch"
-					id="questions-2"
-					value="I want you to check the names I wrote in the code"
-				/>
-				<label class="form-check-label text-light" for="questions-2">Проверить имя файла</label>
-			</div>
-			<div class="form-check form-switch">
-				<input
-					class="form-check-input"
-					type="checkbox"
-					role="switch"
-					id="questions-3"
-					value="I want you to do a code review of this code:"
-					checked
-				/>
-				<label class="form-check-label text-light" for="questions-3">Сделай рефакторинг кода</label>
-			</div>
-			<div class="form-check form-switch">
-				<input
-					class="form-check-input"
-					type="checkbox"
-					role="switch"
-					id="questions-4"
-					value="improving the typing of this code"
-				/>
-				<label class="form-check-label text-light" for="questions-4">Улучши типизацию</label>
-			</div>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body id="extension-body">
+	<div id="status-area" style="display: none;" class="alert alert-danger" role="alert">OK</div>
+	<div class="p-2" id="extension-request">
+		<div class="form-check form-switch">
+			<input class="form-check-input" type="checkbox" role="switch" id="questions-1"
+				value="Check the spelling if there are none, write that there is none, except for this, do not walk" />
+			<label class="form-check-label text-light" for="questions-1">Проверить правописание</label>
 		</div>
-        <div id="extension-input-one">
-            <div>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="path-input-one"
-                    placeholder="Введите путь до файла"
-                />
-            </div>
-                <button id="path-button" type="submit" class="btn text-light">Отправить</button>
-         </div>
-		 <div id="extension-input-all">
-            <div >
-                <input
-                    type="text"
-                    class="form-control"
-                    id="path-input-all"
-                    placeholder="Введите путь до папки"
-                />
-            </div>
-                <button id="folder-button" type="submit" class="btn text-light">Отправить</button>
-         </div>
-          
-        </div>
+		<div class="form-check form-switch">
+			<input class="form-check-input" type="checkbox" role="switch" id="questions-2"
+				value="I want you to check the names I wrote in the code" />
+			<label class="form-check-label text-light" for="questions-2">Проверить имя файла</label>
+		</div>
+		<div class="form-check form-switch">
+			<input class="form-check-input" type="checkbox" role="switch" id="questions-3"
+				value="I want you to do a code review of this code:" checked />
+			<label class="form-check-label text-light" for="questions-3">Сделай рефакторинг кода</label>
+		</div>
+		<div class="form-check form-switch">
+			<input class="form-check-input" type="checkbox" role="switch" id="questions-4"
+				value="improving the typing of this code" />
+			<label class="form-check-label text-light" for="questions-4">Улучши типизацию</label>
+		</div>
+	</div>
+	<div id="input-area">
+		<div id="extension-input-one">
+			<div>
+				<input type="text" class="form-control" id="path-input-one" placeholder="Введите путь до файла" />
+			</div>
+			<button id="path-button" type="submit" class="btn text-light">Отправить</button>
+		</div>
+		<div id="extension-input-all">
+			<div>
+				<input type="text" class="form-control" id="path-input-all" placeholder="Введите путь до папки" />
+			</div>
+			<button id="folder-button" type="submit" class="btn text-light">Отправить</button>
+		</div>
+	</div>
+	</div>
 
 
-		<!-- <script
+	<!-- <script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 			crossorigin="anonymous"
 		></script> -->
-	</body>
+</body>
+
 </html>

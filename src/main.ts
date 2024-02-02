@@ -28,7 +28,7 @@ function initHotkeys() {
 function initApp() {
 	initChatGPTExtends();
 	initHotkeys();
-	storageManager()
+	storageManager();
 }
 
 initApp();

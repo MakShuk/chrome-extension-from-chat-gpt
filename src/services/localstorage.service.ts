@@ -1,5 +1,5 @@
 import localforage from 'localforage';
-import { LocalStorageKey } from 'src/settings/localstorage-key';
+import { LocalStorageKey } from '../settings/localstorage-key';
 
 interface GetItemResultError {
 	error: true;

@@ -25,4 +25,15 @@ export function sendMessage(request: string) {
 			if (sendBtn) sendBtn.click();
 		}, CLAUDE_SEND_DELAY);
 	}
+
+	const textGigaChatArea = document.querySelector('#chatTextArea') as HTMLTextAreaElement;
+	if (textGigaChatArea) {
+		textGigaChatArea.focus();
+		textGigaChatArea.value = request;
+		textGigaChatArea.dispatchEvent(new Event('input', { bubbles: true, cancelable: false }));
+		const sendBtn = document.querySelector('[aria-label="Send Message"]') as HTMLButtonElement;
+		setTimeout(() => {
+			if (sendBtn) sendBtn.click();
+		}, CLAUDE_SEND_DELAY);
+	}
 }

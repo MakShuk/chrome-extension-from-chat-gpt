@@ -14,9 +14,12 @@ $background-color: #34353d;
 	align-self: center;
 	padding: 20px;
 	flex-direction: column;
-	#extension-request {
+
+	#extension-request,
+	#request-param {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: max-content max-content;
+		justify-content: space-around;
 		input:checked {
 			background-color: $primary-color;
 			border-color: $primary-color;
@@ -25,15 +28,21 @@ $background-color: #34353d;
 			@include focus-style;
 		}
 	}
+
+	#request-param {
+		grid-template-columns: max-content max-content max-content;
+		padding: 10px;
+	}
 	#extension-input-all,
 	#extension-input-one {
 		display: grid;
-		grid-template-columns: 80% 20%;
-		gap: 10px;
+		grid-template-columns: 80% 12% 6%;
+		gap: 5px;
 		margin-bottom: 10px;
 		button {
 			background-color: $primary-color;
 			width: 100%;
+		
 		}
 
 		input:focus {
@@ -52,10 +61,10 @@ $background-color: #34353d;
 			width: 21px;
 			margin: 10px;
 			cursor: pointer;
-			transition: transform 0.2s; 
+			transition: transform 0.2s;
 		}
 		img:active {
-			transform: scale(0.90);
-		  }
+			transform: scale(0.9);
+		}
 	}
 }

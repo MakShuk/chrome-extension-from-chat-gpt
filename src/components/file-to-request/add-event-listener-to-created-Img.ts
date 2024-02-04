@@ -19,9 +19,10 @@ export async function addEventListenerToCreatedImg() {
 				const { content, error } = await requestOneFile(folderPath + '/' + fileName);
 				if (error) throw new Error(content);
 
-				const task = getRequestParameter();
-				const request = messageConstructor(task, content);
-				
+				const { tasks, parameter } = getRequestParameter();
+				console.log(parameter);
+				const request = messageConstructor(tasks, parameter, content);
+
 				statusArea.setTextContent(request);
 
 				await runBackgroundScript(sendMessage, [request]);

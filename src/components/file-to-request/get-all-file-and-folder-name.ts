@@ -1,12 +1,12 @@
 import { PageElementService } from '../../services/page-element.service';
 import { ExtensionElementsSelector } from '../../settings/elements-selector';
-import { requestAllFile } from './get-file-code-from-path-input';
-
+import { requestAllFile } from './request-to-api';
 import { createFolderAndFileElements } from './create-folder-and-file-elements';
-
 import { addEventListenerToCreatedImg } from './add-event-listener-to-created-Img';
 import { LocalStorageKey } from '../../settings/localstorage-key';
 import { LocalStorageService } from '../../services/localstorage.service';
+import { saveParamToLocalStorage } from './save-request-param';
+import { setRequestAndParam } from './storage-manager';
 
 export async function getAllFileAndFolderNameToRequest() {
 	try {
@@ -30,8 +30,10 @@ export async function getAllFileAndFolderNameToRequest() {
 			} else {
 				hideAllInput();
 				await folderPathStorage.setItem(pathInputValue.content);
+				await saveParamToLocalStorage();
 				createFolderAndFileElements(taskCodeStatus.data);
-				addEventListenerToCreatedImg();
+				await addEventListenerToCreatedImg();
+				await setRequestAndParam();
 			}
 		});
 		return { content: ``, error: false };

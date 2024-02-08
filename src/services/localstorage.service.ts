@@ -35,7 +35,7 @@ export class LocalStorageService {
 	async setItem<T>(value: T): Promise<SetItemResult> {
 		try {
 			await localforage.setItem(this.storageKey, value);
-			return { content: `Значение ${value}с ключом ${this.storageKey} `, error: false };
+			return { content: `Значение ${value} с ключом ${this.storageKey} `, error: false };
 		} catch (error) {
 			return { content: `LocalStorageService.getItem: ${error}`, error: true };
 		}

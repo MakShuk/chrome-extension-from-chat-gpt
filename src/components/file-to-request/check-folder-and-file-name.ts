@@ -3,7 +3,7 @@ import { messageConstructor } from '../../script/message-constructor';
 import { PageElementService } from '../../services/page-element.service';
 import { ExtensionElementsSelector } from '../../settings/elements-selector';
 import { sendMessage } from './send-message';
-import { requestAllFile } from './get-file-code-from-path-input';
+import { requestAllFile } from './request-to-api';
 
 const TASK = `Check the names of files and folders, give recommendations on naming`;
 
@@ -34,7 +34,6 @@ export function checkAllFolderAndFileName() {
 		if (!value.error && value.content.length > 0) {
 			const taskCodeStatus = await requestAllFile(value.content);
 			if (taskCodeStatus.data) {
-				console.log(splitPatchArray(taskCodeStatus.data));
 				const request = messageConstructor(TASK, '', splitPatchArray(taskCodeStatus.data));
 				await runBackgroundScript(sendMessage, [request]);
 				window.close();

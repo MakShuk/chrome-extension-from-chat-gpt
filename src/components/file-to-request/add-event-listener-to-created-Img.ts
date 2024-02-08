@@ -1,10 +1,10 @@
-import { PageElementService } from '../../services/page-element.service';
-import { requestOneFile } from './get-file-code-from-path-input';
+import { requestOneFile } from './request-to-api';
 import { messageConstructor } from '../../script/message-constructor';
 import { runBackgroundScript } from '../../script/run-background-script';
 import { ExtensionElementsSelector } from '../../settings/elements-selector';
 import { getRequestParameter } from './get-request-parameter';
 import { sendMessage } from './send-message';
+import { saveParamToLocalStorage } from './save-request-param';
 
 export async function addEventListenerToCreatedImg() {
 	try {
@@ -13,18 +13,13 @@ export async function addEventListenerToCreatedImg() {
 		imgs.forEach(img => {
 			img.addEventListener('click', async _event => {
 				const { folderPath, fileName } = getFileData(img);
-
-				const statusArea = new PageElementService(ExtensionElementsSelector.StatusArea);
-
 				const { content, error } = await requestOneFile(folderPath + '/' + fileName);
 				if (error) throw new Error(content);
 
 				const { tasks, parameter } = getRequestParameter();
-				console.log(parameter);
+
 				const request = messageConstructor(tasks, parameter, content);
-
-				statusArea.setTextContent(request);
-
+				await saveParamToLocalStorage();
 				await runBackgroundScript(sendMessage, [request]);
 
 				window.close();

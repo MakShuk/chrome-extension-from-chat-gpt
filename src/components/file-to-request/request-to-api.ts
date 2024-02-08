@@ -3,7 +3,8 @@ import axios from 'axios';
 export async function requestOneFile(path: string) {
 	try {
 		if (path.length <= 0) throw new Error(`Получено пустое значение пути`);
-		const content = await axios(`http://localhost:3333/content/file?path=${path}`);
+		const fullPath = `http://localhost:3333/content/file?path=${path}`;
+		const content = await axios(fullPath);
 		if (typeof content.data !== 'string') {
 			throw new Error('Неверный тип данных в ответе API. Ожидалась строка.');
 		}
@@ -41,7 +42,7 @@ export async function requestAllFile(path: string) {
 				}
 			}
 		}
-
+		console.log(content);
 		return { content: `Значения получены`, error: false, data: content };
 	} catch (error) {
 		return { content: `Запрос по пути ${path} Функция: requestAllFile, ${error}`, error: true };

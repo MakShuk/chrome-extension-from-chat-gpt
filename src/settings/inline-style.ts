@@ -1,5 +1,5 @@
 export const inlineStyle = {
-	li: `style = 'padding: 10px; border: 1px solid #8e8ea0; height: 100%; ')`,
+	li: `style = 'padding: 10px; border: 1px solid #8e8ea0; height: 100%; '`,
 	ul: `style="display: grid; height: auto; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 10px; padding: 10px; list-style: none;"`,
 };
 

@@ -2,11 +2,12 @@ import { runBackgroundScript } from '../../script/run-background-script';
 import { messageConstructor } from '../../script/message-constructor';
 import { PageElementService } from '../../services/page-element.service';
 import { ExtensionElementsSelector } from '../../settings/elements-selector';
-import { requestOneFile } from './get-file-code-from-path-input';
+import { requestOneFile } from './request-to-api';
 import { sendMessage } from './send-message';
 import { getRequestParameter } from './get-request-parameter';
 import { LocalStorageKey } from '../../settings//localstorage-key';
 import { LocalStorageService } from '../../services/localstorage.service';
+import { saveParamToLocalStorage } from './save-request-param';
 
 export async function getOneFileToRequest() {
 	try {
@@ -32,9 +33,9 @@ export async function getOneFileToRequest() {
 				await filePathStorage.setItem(pathInputValue.content);
 				const codeInPash = taskCodeStatus.content;
 				const { tasks, parameter } = getRequestParameter();
-				console.log(parameter);
 				const request = messageConstructor(tasks, parameter, codeInPash);
 				await runBackgroundScript(sendMessage, [request]);
+				await saveParamToLocalStorage();
 				window.close();
 			}
 		});

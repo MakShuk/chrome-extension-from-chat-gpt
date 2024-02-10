@@ -29,10 +29,14 @@ function initHotkeys() {
 	googleHotKeyExtends();
 }
 
+async function initCodeReview() {
+	await storageManager();
+}
+
 function initApp() {
 	initChatGPTExtends();
 	initHotkeys();
-	storageManager();
+	initCodeReview();
 }
 
 initApp();

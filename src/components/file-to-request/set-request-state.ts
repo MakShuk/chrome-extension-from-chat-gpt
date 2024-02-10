@@ -1,10 +1,18 @@
+import { LocalStorageService } from '@services/localstorage.service';
+import { LocalStorageKey } from '../../settings/localstorage-key';
+
 interface IUpdateRequestData {
 	fullUrl: string;
 	file: string[];
 	revueFile?: string[];
 }
 
-function updateRequestData(data: IUpdateRequestData[], fullUrl: string, fileName: string) {
+export function setRequestToStorage(data: IUpdateRequestData[]) {
+	const dataStorage = new LocalStorageService(LocalStorageKey.FileAndFolderData);
+	dataStorage.setItem(data);
+}
+
+export function updateRequestData(data: IUpdateRequestData[], fullUrl: string, fileName: string) {
 	const foundObject = data.find(item => item.fullUrl === fullUrl);
 
 	if (foundObject) {

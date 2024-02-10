@@ -3,7 +3,7 @@ import { ExtensionElementsSelector } from '../../settings/elements-selector';
 
 
 export function createFolderAndFileElements(data: { fullUrl: string; file: string[] }[]) {
-	const bodyElStatus = new PageElementService('#extension-body');
+	const bodyElStatus = new PageElementService(ExtensionElementsSelector.DataArea);
 	for (const folder of data) {
 		bodyElStatus.addHTML(`<div class="card mb-3" style="width: 100%;">
 		<div class="card-header">

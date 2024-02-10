@@ -15,4 +15,7 @@ export enum ExtensionElementsSelector {
 	RequestParam = '#request-param',
 	FolderNameButton = '#folder-name-button',
 	FileNameButton = '#file-name-button',
+	ResetButton = '#reset',
+	DataArea = '#data-area',
+	InputArea = '#input-area',
 }

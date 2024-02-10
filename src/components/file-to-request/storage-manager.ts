@@ -2,11 +2,16 @@ import { ExtensionElementsSelector } from '../../settings/elements-selector';
 import { PageElementService } from '../../services/page-element.service';
 import { LocalStorageService } from '../../services/localstorage.service';
 import { LocalStorageKey } from '../../settings/localstorage-key';
+import { hideAllInput } from './get-all-file-and-folder-name';
+import { createFolderAndFileElements } from './create-folder-and-file-elements';
+import { addEventListenerToCreatedImg } from './add-event-listener-to-created-Img';
+import { addResetButtonEvent } from './reset-button-event';
 
 export async function storageManager() {
 	await setFilePath();
 	await setFolderPath();
 	await setRequestAndParam();
+	await checkDataRequestStatus();
 }
 
 export async function setRequestAndParam() {
@@ -72,5 +77,18 @@ async function setExtensionRequestParam() {
 			const el = document.querySelector(`#flexCheck-${e}`) as HTMLInputElement;
 			el.checked = true;
 		});
+	}
+}
+
+async function checkDataRequestStatus() {
+	const dataStorage = new LocalStorageService(LocalStorageKey.FileAndFolderData);
+	const storageStatus = await dataStorage.getItem();
+	if (!storageStatus.error && storageStatus.data.length > 0) {
+		const resetButton = new PageElementService(ExtensionElementsSelector.ResetButton);
+		resetButton.hide(false);
+		hideAllInput();
+		createFolderAndFileElements(storageStatus.data);
+		await addEventListenerToCreatedImg();
+		addResetButtonEvent();
 	}
 }

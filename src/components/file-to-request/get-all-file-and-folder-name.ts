@@ -7,6 +7,8 @@ import { LocalStorageKey } from '../../settings/localstorage-key';
 import { LocalStorageService } from '../../services/localstorage.service';
 import { saveParamToLocalStorage } from './save-request-param';
 import { setRequestAndParam } from './storage-manager';
+import { setRequestToStorage } from './set-request-state';
+import { addResetButtonEvent } from './reset-button-event';
 
 export async function getAllFileAndFolderNameToRequest() {
 	try {
@@ -34,6 +36,10 @@ export async function getAllFileAndFolderNameToRequest() {
 				createFolderAndFileElements(taskCodeStatus.data);
 				await addEventListenerToCreatedImg();
 				await setRequestAndParam();
+				setRequestToStorage(taskCodeStatus.data);
+				addResetButtonEvent();
+				const resetButton = new PageElementService(ExtensionElementsSelector.ResetButton);
+				resetButton.hide(false, 'grid');
 			}
 		});
 		return { content: ``, error: false };
@@ -44,7 +50,7 @@ export async function getAllFileAndFolderNameToRequest() {
 	}
 }
 
-function hideAllInput() {
-	const inputAreaElement = new PageElementService(`#input-area`);
+export function hideAllInput() {
+	const inputAreaElement = new PageElementService(ExtensionElementsSelector.InputArea);
 	inputAreaElement.hide(true);
 }

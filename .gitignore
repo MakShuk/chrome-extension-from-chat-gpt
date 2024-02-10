@@ -23,7 +23,7 @@ lerna-debug.log*
 /.idea
 .project
 .classpath
-.c9/
+.c9/  
 *.launch
 .settings/
 *.sublime-workspace

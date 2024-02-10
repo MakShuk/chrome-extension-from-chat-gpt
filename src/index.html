@@ -12,7 +12,9 @@
 	</head>
 	<body id="extension-body">
 		<div id="status-area" style="display: none" class="alert alert-danger" role="alert">OK</div>
-
+		<div id="reset" style="display: none">
+			<img id="reset-img" src="./assets/reset.png" />
+		</div>
 		<div class="p-2" id="extension-request">
 			<div class="form-check form-switch">
 				<input
@@ -84,16 +86,18 @@
 
 		<div id="input-area">
 			<div id="extension-input-one">
-				<div>
-					<input
-						type="text"
-						class="form-control"
-						id="path-input-one"
-						placeholder="Введите путь до файла"
-					/>
-				</div>
-				<button id="path-button" type="submit" class="btn text-light">SEND</button>
-				<button id="file-name-button" type="submit" class="btn text-light">F</button>
+				<input
+					type="text"
+					class="form-control"
+					id="path-input-one"
+					placeholder="Введите путь до файла"
+				/>
+				<button id="path-button" type="submit" class="btn text-light">
+					<img width="25px" src="./assets/send.png" />
+				</button>
+				<button id="file-name-button" type="submit" class="btn text-light">
+					<img width="15px" src="./assets/names.png" />
+				</button>
 			</div>
 			<div id="extension-input-all">
 				<div>
@@ -104,9 +108,14 @@
 						placeholder="Введите путь до папки"
 					/>
 				</div>
-				<button id="folder-button" type="submit" class="btn text-light">SEND</button>
-				<button id="folder-name-button" type="submit" class="btn text-light">F</button>
+				<button id="folder-button" type="submit" class="btn text-light">
+					<img width="25px" src="./assets/folder.png" />
+				</button>
+				<button id="folder-name-button" type="submit" class="btn text-light">
+					<img width="15px" src="./assets/names.png" />
+				</button>
 			</div>
 		</div>
+		<div id="data-area"></div>
 	</body>
 </html>

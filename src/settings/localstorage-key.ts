@@ -11,4 +11,5 @@ export enum LocalStorageKey {
 	FileURL = 'file',
 	Request = 'request',
 	RequestParam = 'param',
+	FileAndFolderData = 'data',
 }

@@ -5,6 +5,8 @@ import { ExtensionElementsSelector } from '../../settings/elements-selector';
 import { getRequestParameter } from './get-request-parameter';
 import { sendMessage } from './send-message';
 import { saveParamToLocalStorage } from './save-request-param';
+import { PageElementService } from '../../services/page-element.service';
+import { updateFileAndFolderData } from './set-request-state';
 
 export async function addEventListenerToCreatedImg() {
 	try {
@@ -22,7 +24,18 @@ export async function addEventListenerToCreatedImg() {
 				await saveParamToLocalStorage();
 				await runBackgroundScript(sendMessage, [request]);
 
-				window.close();
+				const areaValue = img.getAttribute('area');
+
+				if (!areaValue) return;
+
+				const imgInParent = img.parentElement?.querySelectorAll('img');
+				if (imgInParent && imgInParent.length <= 1) {
+					initCheckStatusIcon(img);
+					checkFullTasks(areaValue);
+					updateDataInStorage(img);
+				}
+
+				//window.close();
 			});
 		});
 		return { content: `Установленно событие по клику на все элементы img`, error: false };
@@ -51,4 +64,47 @@ const getFileData = (img: Element) => {
 	}
 
 	return { folderPath, fileName };
+};
+
+const initCheckStatusIcon = (el: Element) => {
+	const fileEl = el.parentElement as HTMLDivElement;
+	const areaValue = el.getAttribute('area');
+
+	if (fileEl) {
+		fileEl.style.gridTemplateColumns = `60% 20% 20%`;
+		const classNames = ` ${ExtensionElementsSelector.CreatedImg}`;
+		fileEl.innerHTML += `<img class="${classNames} ok-${areaValue}" src="./assets/ok.png">`;
+	}
+};
+
+const checkFullTasks = (areaValue: string) => {
+	const allFileElements = document.querySelectorAll(`.file-in-area-${areaValue}`);
+	const allOkElements = document.querySelectorAll(`.ok-${areaValue}`);
+
+	if (allFileElements.length === allOkElements.length) {
+		const fullPathElement = document.querySelector(`.full-path-${areaValue}`) as HTMLDivElement;
+		fullPathElement.style.backgroundColor = '#228B22';
+	}
+};
+
+const updateDataInStorage = async (el: Element) => {
+	const areaValue = el.getAttribute('area');
+	const nameValue = el.getAttribute('name');
+
+	if (!areaValue || !nameValue) {
+		console.error('updateDataInStorage: ', 'не найдены атрибуты: ', { areaValue }, { nameValue });
+		return;
+	}
+
+	const fullPathSelector = `.full-path-${areaValue}`;
+	const fullPathElement = new PageElementService(fullPathSelector);
+
+	const fullPath = fullPathElement.getTextContent();
+
+	if (fullPath.error) {
+		console.error('updateDataInStorage: ', fullPath.content);
+		return;
+	}
+
+	await updateFileAndFolderData(fullPath.content, nameValue);
 };

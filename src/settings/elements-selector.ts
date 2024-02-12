@@ -12,6 +12,7 @@ export enum ExtensionElementsSelector {
 	StatusArea = '#status-area',
 	ExtensionRequest = '#extension-request',
 	CreatedImg = 'created-img',
+	CheckedImg = 'checked-img',
 	RequestParam = '#request-param',
 	FolderNameButton = '#folder-name-button',
 	FileNameButton = '#file-name-button',

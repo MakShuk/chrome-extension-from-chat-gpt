@@ -42,7 +42,6 @@ export async function requestAllFile(path: string) {
 				}
 			}
 		}
-		console.log(content);
 		return { content: `Значения получены`, error: false, data: content };
 	} catch (error) {
 		return { content: `Запрос по пути ${path} Функция: requestAllFile, ${error}`, error: true };

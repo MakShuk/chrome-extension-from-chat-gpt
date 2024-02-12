@@ -63,9 +63,11 @@ $background-color: #34353d;
 	file {
 		display: grid;
 		grid-template-columns: 80% 20%;
+		justify-items: center;
 		div {
 			padding: 0.5rem;
 			padding-left: 25px;
+			justify-self: start;
 		}
 		img {
 			width: 21px;

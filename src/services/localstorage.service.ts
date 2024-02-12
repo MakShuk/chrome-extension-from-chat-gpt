@@ -11,20 +11,19 @@ interface SetItemResultSuccess {
 	content: string;
 }
 
-interface GetItemResultSuccess {
+export interface GetItemResultSuccess<T> {
 	error: false;
 	content: string;
-	data: any;
+	data: T;
 }
-
-type GetItemResult = GetItemResultError | GetItemResultSuccess;
+type GetItemResult<T> = GetItemResultError | GetItemResultSuccess<T>;
 type SetItemResult = GetItemResultError | SetItemResultSuccess;
 
-export class LocalStorageService {
+export class LocalStorageService<T> {
 	constructor(private storageKey: LocalStorageKey) {}
-	async getItem(): Promise<GetItemResult> {
+	async getItem(): Promise<GetItemResult<T>> {
 		try {
-			const data = await localforage.getItem(this.storageKey);
+			const data = (await localforage.getItem(this.storageKey)) as T;
 			if (!data) throw new Error(`Значение с ключом LocalStorageKey.FolderURl не наедено`);
 			return { content: `Значение с ключом ${this.storageKey} получено`, error: false, data };
 		} catch (error) {
@@ -37,7 +36,7 @@ export class LocalStorageService {
 			await localforage.setItem(this.storageKey, value);
 			return { content: `Значение ${value} с ключом ${this.storageKey} `, error: false };
 		} catch (error) {
-			return { content: `LocalStorageService.getItem: ${error}`, error: true };
+			return { content: `LocalStorageService.setItem: ${error}`, error: true };
 		}
 	}
 }

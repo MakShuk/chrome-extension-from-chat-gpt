@@ -4,6 +4,7 @@ import { PageElementService } from '../../services/page-element.service';
 import { ExtensionElementsSelector } from '../../settings/elements-selector';
 import { sendMessage } from './send-message';
 import { requestAllFile } from './request-to-api';
+import { IUpdateRequestData } from './file-to-request.interface';
 
 const TASK = `Check the names of files and folders, give recommendations on naming`;
 
@@ -45,16 +46,14 @@ export function checkAllFolderAndFileName() {
 	});
 }
 
-function splitPatchArray(
-	array: {
-		fullUrl: string;
-		file: string[];
-	}[],
-) {
+function splitPatchArray(array: IUpdateRequestData[]): string {
 	let finalPath = '';
-	for (const path of array)
-		for (const fileName of path.file) {
-			finalPath += ` ${path.fullUrl.replace(/\/opt\/app\/data\//, '')}/${fileName}`;
+	for (const path of array) {
+		if (path.fullUrl && path.file && path.file.length > 0) {
+			for (const fileName of path.file) {
+				finalPath += ` ${path.fullUrl.replace(/\/opt\/app\/data\//, '')}/${fileName}`;
+			}
 		}
+	}
 	return finalPath.replace(/\/\/+/g, '/');
 }

@@ -16,7 +16,7 @@ export async function requestOneFile(path: string) {
 
 export async function requestAllFile(path: string) {
 	try {
-		if (path.length <= 0) throw new Error(`Получено пустое значение пути`);
+		if (path !== 'string') throw new Error(`Получено пустое значение пути`);
 		const content: { fullUrl: string; file: string[] }[] = (
 			await axios(`http://localhost:3333/content/all?path=${path}`)
 		).data;

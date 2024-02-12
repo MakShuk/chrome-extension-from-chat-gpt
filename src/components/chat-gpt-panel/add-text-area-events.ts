@@ -21,3 +21,4 @@ export function addTextAreaEvents() {
 		}, HIDE_DELAY);
 	}, 'blur');
 }
+

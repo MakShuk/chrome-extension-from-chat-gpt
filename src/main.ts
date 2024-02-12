@@ -21,7 +21,9 @@ function initChatGPTExtends() {
 		checkAllFolderAndFileName();
 		return { content: `Функции чата выполнены без ошибок`, error: false };
 	} catch (error) {
-		return { content: `${error}`, error: true };
+		const errorMessage = `initChatGPTExtends: ${error}`;
+		console.error(errorMessage);
+		return { content: errorMessage, error: true };
 	}
 }
 
@@ -30,7 +32,7 @@ function initHotkeys() {
 }
 
 async function initCodeReview() {
-	await storageManager();
+	storageManager();
 }
 
 function initApp() {

@@ -6,6 +6,7 @@ import { hideAllInput } from './get-all-file-and-folder-name';
 import { createFolderAndFileElements } from './create-folder-and-file-elements';
 import { addEventListenerToCreatedImg } from './add-event-listener-to-created-Img';
 import { addResetButtonEvent } from './reset-button-event';
+import { IUpdateRequestData } from './file-to-request.interface';
 
 export async function storageManager() {
 	await setFilePath();
@@ -21,7 +22,7 @@ export async function setRequestAndParam() {
 
 async function setFilePath() {
 	const pathInput = new PageElementService(ExtensionElementsSelector.PathInputOne);
-	const pathStorage = new LocalStorageService(LocalStorageKey.FileURL);
+	const pathStorage = new LocalStorageService<string>(LocalStorageKey.FileURL);
 
 	const pathStorageValue = await pathStorage.getItem();
 
@@ -36,7 +37,7 @@ async function setFilePath() {
 
 async function setFolderPath() {
 	const pathInput = new PageElementService(ExtensionElementsSelector.PathInputAll);
-	const pathStorage = new LocalStorageService(LocalStorageKey.FolderURL);
+	const pathStorage = new LocalStorageService<string>(LocalStorageKey.FolderURL);
 
 	const pathStorageValue = await pathStorage.getItem();
 
@@ -81,7 +82,7 @@ async function setExtensionRequestParam() {
 }
 
 async function checkDataRequestStatus() {
-	const dataStorage = new LocalStorageService(LocalStorageKey.FileAndFolderData);
+	const dataStorage = new LocalStorageService<IUpdateRequestData[]>(LocalStorageKey.FileAndFolderData);
 	const storageStatus = await dataStorage.getItem();
 	if (!storageStatus.error && storageStatus.data.length > 0) {
 		const resetButton = new PageElementService(ExtensionElementsSelector.ResetButton);

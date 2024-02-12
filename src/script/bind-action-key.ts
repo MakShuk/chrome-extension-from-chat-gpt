@@ -8,7 +8,7 @@ export class BindActionHotKey {
 			if (this.element) {
 				addEventListener('keydown', e => {
 					if (e.key === this.hotKey) {
-						this.element.node.element?.click();
+						this.element.node.element && this.element.node.element.click();
 					}
 				});
 			} else {

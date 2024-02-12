@@ -35,7 +35,7 @@ export async function addEventListenerToCreatedImg() {
 					updateDataInStorage(img);
 				}
 
-				//window.close();
+				window.close();
 			});
 		});
 		return { content: `Установленно событие по клику на все элементы img`, error: false };

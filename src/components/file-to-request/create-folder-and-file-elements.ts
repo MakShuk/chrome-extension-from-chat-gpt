@@ -11,7 +11,7 @@ export function createFolderAndFileElements(data: IUpdateRequestData[]) {
 
 		const backgroundStyle = isAllFileOk ? `style="background-color: rgb(34, 139, 34);"` : '';
 
-		bodyElStatus.addHTML(`<div class="card mb-3" style="width: 100%;">
+		bodyElStatus.addHTML(`<div class="card mb-3">
 		<div class="card-header full-path-${i}" ${backgroundStyle}">
 		  ${folder.fullUrl}
 		</div>

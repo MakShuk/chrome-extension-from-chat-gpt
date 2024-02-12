@@ -3,12 +3,16 @@ import { LocalStorageKey } from '../../settings/localstorage-key';
 import { IUpdateRequestData } from './file-to-request.interface';
 
 export function setRequestToStorage(data: IUpdateRequestData[]) {
-	const dataStorage = new LocalStorageService(LocalStorageKey.FileAndFolderData);
+	const dataStorage = new LocalStorageService<IUpdateRequestData[]>(
+		LocalStorageKey.FileAndFolderData,
+	);
 	dataStorage.setItem(data);
 }
 
 export async function updateFileAndFolderData(fullUrl: string, fileName: string) {
-	const dataStorage = new LocalStorageService(LocalStorageKey.FileAndFolderData);
+	const dataStorage = new LocalStorageService<IUpdateRequestData[]>(
+		LocalStorageKey.FileAndFolderData,
+	);
 	const getDataStatus = await dataStorage.getItem();
 	if (getDataStatus.error) {
 		console.error(getDataStatus.error);
@@ -25,13 +29,13 @@ export async function updateFileAndFolderData(fullUrl: string, fileName: string)
 
 export function updateDataArray(data: IUpdateRequestData[], fullUrl: string, fileName: string) {
 	const dataClone = structuredClone(data) as IUpdateRequestData[];
-	const clearFullUrl = fullUrl.trim();
-	const clearFileName = fileName.trim();
+	const trimmedFullUrl = fullUrl.trim();
+	const trimmedFileName = fileName.trim();
 
 	for (const el of dataClone) {
-		if (el.fullUrl === clearFullUrl) {
+		if (el.fullUrl === trimmedFullUrl) {
 			if (!el.revueFile) el.revueFile = [];
-			if (!el.revueFile.includes(clearFileName)) el.revueFile.push(clearFileName);
+			if (!el.revueFile.includes(trimmedFileName)) el.revueFile.push(trimmedFileName);
 		}
 	}
 	return dataClone;

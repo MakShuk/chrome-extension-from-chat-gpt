@@ -30,7 +30,7 @@ function getParameters() {
 	for (let i = 1; i < counter + 1; i++) {
 		const questionsInput = new PageElementService(`#flexCheck-${i}`);
 		if (questionsInput.isChecked().content === true) {
-			parameters += questionsInput.getValue().content;
+			parameters += ` ${questionsInput.getValue().content}, ` 
 		}
 	}
 	return parameters;

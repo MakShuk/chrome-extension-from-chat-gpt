@@ -5,7 +5,7 @@ export function messageConstructor(task: string, context: string, taskCode: stri
 
 	return `[${format}] [${persona}] 
 	[This code uses ${context}]
-	${task} :
+	${task}
 	 "${taskCode}"
 	  [${format}] [${tone}]`;
 }

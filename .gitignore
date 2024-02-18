@@ -40,3 +40,4 @@ lerna-debug.log*
 .env
 build/contentScript.js
 build/popup.html
+build/contentScript.js.LICENSE.txt

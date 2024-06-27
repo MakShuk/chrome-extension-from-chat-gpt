@@ -34,7 +34,7 @@ export async function addEventListenerToCreatedImg() {
 					checkFullTasks(areaValue);
 					updateDataInStorage(img);
 				}
-
+				copyToClipboard(request);
 				window.close();
 			});
 		});
@@ -108,3 +108,18 @@ const updateDataInStorage = async (el: Element) => {
 
 	await updateFileAndFolderData(fullPath.content, nameValue);
 };
+
+function copyToClipboard(text: string) {
+	if (navigator.clipboard) {
+		navigator.clipboard
+			.writeText(text)
+			.then(() => {
+				console.log('Текст скопирован в буфер обмена');
+			})
+			.catch(err => {
+				console.error('Не удалось скопировать текст: ', err);
+			});
+	} else {
+		console.error('Ваш браузер не поддерживает доступ к буферу обмена');
+	}
+}

@@ -3,9 +3,9 @@ export function messageConstructor(task: string, context: string, taskCode: stri
 	const format = `Answer in Russian`;
 	const tone = `Answer in the style of a teacher`;
 
-	return `[${format}] [${persona}] 
-	[This code uses ${context}]
-	${task}
-	 "${taskCode}"
+	return `[${format}] [${persona}],
+	[This code uses ${context}],
+	[${task}]
+	 " ${taskCode} "
 	  [${format}] [${tone}]`;
 }

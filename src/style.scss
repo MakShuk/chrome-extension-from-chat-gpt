@@ -24,6 +24,14 @@ $background-color: #34353d;
 	}
 	#reset-img {
 		height: 15px;
+		height: 15px;
+		position: absolute;
+		bottom: 1px;
+		right: 24px;
+	}
+
+	#extension-request {
+		height: max-content;
 	}
 
 	#extension-request,

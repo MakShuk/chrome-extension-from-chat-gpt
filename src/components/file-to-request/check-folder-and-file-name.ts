@@ -34,6 +34,7 @@ export function checkAllFolderAndFileName() {
 		const value = fileAndFolderNameInput.getValue();
 		if (!value.error && value.content.length > 0) {
 			const taskCodeStatus = await requestAllFile(value.content);
+
 			if (taskCodeStatus.data) {
 				const request = messageConstructor(TASK, '', splitPatchArray(taskCodeStatus.data));
 				await runBackgroundScript(sendMessage, [request]);
